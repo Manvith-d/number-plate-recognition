@@ -1,23 +1,55 @@
 # Number Plate Recognition
 
-A Python desktop application that detects number plate regions and reads their text using OpenCV and Tesseract OCR.
+**From a vehicle image to readable plate text.**
 
-## Technologies
-Python, OpenCV, NumPy, Pillow, Tesseract OCR, and Tkinter.
+A Python desktop application that finds candidate number-plate regions using classical computer vision and extracts text with Tesseract OCR. A Tkinter interface lets users upload an image and run the recognition workflow.
 
-## Run
-1. Install Python with Tkinter support and install the Tesseract executable for your operating system. Make sure `tesseract` is on your PATH.
-2. Create a virtual environment and install `pip install -r requirements.txt`.
-3. Run `python main.py` from this directory.
-4. Choose an image you have permission to use, then click **Classify Image**.
+## Processing pipeline
 
-`gui.py` preserves an earlier version with stricter geometry thresholds. Optional `car.png` and `logo.png` can be added locally. Example vehicle photos and generated OCR images are excluded from this source release.
+```mermaid
+flowchart LR
+    A[Uploaded image] --> B[Grayscale and Gaussian blur]
+    B --> C[Sobel edges]
+    C --> D[Otsu threshold and closing]
+    D --> E[Contour and geometry filtering]
+    E --> F[Tesseract OCR]
+    F --> G[Plate text in desktop UI]
+```
 
-## Method
-Gaussian blur, grayscale conversion, Sobel edges, Otsu thresholding, morphological closing, contour filtering, and Tesseract OCR.
+## Technology
 
-## Limitations
-This is an educational prototype. Results depend on image quality, lighting, plate orientation, and the contour heuristics. No accuracy benchmark is claimed. The interface is designed for desktop use.
+| Purpose | Tools |
+| --- | --- |
+| Image processing | OpenCV, NumPy |
+| Text extraction | Tesseract, pytesseract |
+| Desktop interface | Tkinter |
+| Image display | Pillow |
 
-## Validation
-Python syntax checked for this release. GUI and OCR execution require a local desktop and Tesseract installation and have not been tested as part of portfolio preparation.
+## Run locally
+
+1. Install Python with Tkinter support and the Tesseract executable for your operating system. Make `tesseract` available on your PATH.
+2. Create a virtual environment and install dependencies:
+
+```sh
+pip install -r requirements.txt
+python main.py
+```
+
+3. Choose an image you have permission to use and select **Classify Image**.
+
+## Repository guide
+
+| File | Purpose |
+| --- | --- |
+| `main.py` | Main desktop recognition application |
+| `gui.py` | Earlier interface with stricter geometry thresholds |
+| `requirements.txt` | Python dependencies |
+
+Optional `car.png` and `logo.png` artwork can be added locally. Sample vehicle photos and generated OCR images are excluded from this release.
+
+## Engineering considerations
+
+This educational prototype uses geometric heuristics rather than a learned detector. Recognition depends on lighting, image resolution, plate orientation, and contour quality. No accuracy benchmark is claimed. Python syntax was checked during source preparation; end-to-end execution requires a local desktop and Tesseract installation.
+
+---
+Explore more work in [Manvith Reddy Dalli’s portfolio](https://manvith-reddy-dalli.roo7001.chatgpt.site/) · [LinkedIn](https://www.linkedin.com/in/manvith-reddy-dalli-38a06a257)
