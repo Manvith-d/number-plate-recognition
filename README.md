@@ -1,20 +1,22 @@
-# Number Plate Recognition
+<p align="center"><img src="project-banner.svg" alt="PLATE VISION: Locate the plate. Read the characters." width="100%"/></p>
 
-**From a vehicle image to readable plate text.**
+<h1 align="center">Number Plate Recognition</h1>
+
+<p align="center">Locate the plate. Read the characters.</p>
+
+<p align="center"><code>Python</code> &nbsp; <code>OpenCV</code> &nbsp; <code>Tesseract</code> &nbsp; <code>Tkinter</code></p>
+
+<p align="center"><a href="#processing-pipeline">Processing pipeline</a> · <a href="#technology">Technology</a> · <a href="#run-locally">Run locally</a> · <a href="#repository-guide">Repository guide</a> · <a href="#engineering-considerations">Engineering considerations</a></p>
+
+<table><tr><td width="33%" valign="top"><h3>Visual processing</h3><p>Grayscale, Sobel edges, thresholding, and morphology.</p></td><td width="33%" valign="top"><h3>Text extraction</h3><p>Tesseract reads detected number-plate regions.</p></td><td width="33%" valign="top"><h3>Simple desktop flow</h3><p>Upload an image and inspect the recognized text.</p></td></tr></table>
+
+---
 
 A Python desktop application that finds candidate number-plate regions using classical computer vision and extracts text with Tesseract OCR. A Tkinter interface lets users upload an image and run the recognition workflow.
 
 ## Processing pipeline
 
-```mermaid
-flowchart LR
-    A[Uploaded image] --> B[Grayscale and Gaussian blur]
-    B --> C[Sobel edges]
-    C --> D[Otsu threshold and closing]
-    D --> E[Contour and geometry filtering]
-    E --> F[Tesseract OCR]
-    F --> G[Plate text in desktop UI]
-```
+![Plate Vision workflow](project-workflow.svg)
 
 ## Technology
 
@@ -52,4 +54,4 @@ Optional `car.png` and `logo.png` artwork can be added locally. Sample vehicle p
 This educational prototype uses geometric heuristics rather than a learned detector. Recognition depends on lighting, image resolution, plate orientation, and contour quality. No accuracy benchmark is claimed. Python syntax was checked during source preparation; end-to-end execution requires a local desktop and Tesseract installation.
 
 ---
-Explore more work in [Manvith Reddy Dalli’s portfolio](https://manvith-reddy-dalli.roo7001.chatgpt.site/) · [LinkedIn](https://www.linkedin.com/in/manvith-reddy-dalli-38a06a257)
+Explore more work in [Manvith Reddy Dalli’s portfolio](https://manvith-d.github.io/portfolio/) · [LinkedIn](https://www.linkedin.com/in/manvith-reddy-dalli-38a06a257)
